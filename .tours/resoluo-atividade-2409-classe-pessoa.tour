@@ -1,0 +1,47 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Resolução Atividade 2409 - Classe Pessoa",
+  "steps": [
+    {
+      "file": "Pessoa.java",
+      "description": "Crie um novo arquivo chamado Pessoa.java. Dentro deste arquivo defina a classe Pessoa.\n\n```java\npublic class Pessoa\n```",
+      "line": 1
+    },
+    {
+      "file": "Pessoa.java",
+      "description": "Dentro da classe Pessoa, você deve especificar os atributos. Neste caso nome, cpf, email e telefone.",
+      "line": 2
+    },
+    {
+      "file": "Pessoa.java",
+      "description": "Para definir um atributo você deve especificar a visibilidade, o tipo e o nome do atributo.\nA visibilidade de um atributo sempre é ```private```, ou seja, somente acessível dentro da classe.",
+      "line": 3
+    },
+    {
+      "file": "Pessoa.java",
+      "description": "O próximo passo é definir o construtor da classe. Um construtor é um método que permite inicializar os atributos do objeto no momento da sua instanciação. Ao definir o construtor você está estipulando uma regra para a criação dos objetos daquela classe. Ou seja, para criar um objeto é necessário informar todos os dados solicitados pelo construtor.\nO construtor geralmente é público, tem o mesmo nome da classe e uma lista de parâmetros.\n\n```java\npublic Pessoa(String nome, String cpf, String email, String telefone)\n```",
+      "line": 8
+    },
+    {
+      "file": "Pessoa.java",
+      "description": "Você deve indicar como o atributo será inicializado, para isso deve especificar o atributo e qual parâmetro ele recebe.\nNote que é utilizado o ```this``` para diferenciar o atributo do parâmetro.",
+      "line": 9
+    },
+    {
+      "file": "Pessoa.java",
+      "description": "Como os atributos são privados, eles não são acessíveis de outras classes. Para que seja possível o acesso de leitura a um atributo, definimos o método get. Note que o método tem como retorno o mesmo tipo de dado do atributo, inicia com o prefixo get e tem o nome do atributo. No corpo do método, geralmente, existe somente a instrução de retorno do atributo.",
+      "line": 15
+    },
+    {
+      "file": "Pessoa.java",
+      "description": "Para acesso de escrita, ou seja, modificação do atributo, definimos o método set. Que recebe como parâmetro o novo valor do atributo. Gerlamente no corpo do método temos a instrução de modificação do atributo.",
+      "line": 19
+    },
+    {
+      "file": "Pessoa.java",
+      "description": "O método toString é utilizado para representar o estado do objeto (valores dos atributos) no formato de texto.",
+      "line": 47
+    }
+  ],
+  "ref": "prep_0109"
+}
