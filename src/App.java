@@ -79,6 +79,33 @@ public class App{
         System.out.println(conta.sacar(valor));
     }
 
+    private static boolean adicionarPessoaVetor(
+                                           Pessoa[] vetor, 
+                                           Pessoa nova){
+        
+        for(int i=0;i<vetor.length;i++){
+            if(vetor[i] == null){
+                vetor[i] = nova;
+                return true;
+            }
+        }
+
+        return false;
+    
+    }
+
+    private static void mostrarVetorPessoas(Pessoa[] pessoas){
+        System.out.println("###Pessoas Cadastradas###");
+        for(int i=0;i<pessoas.length;i++){
+            if(pessoas[i]!=null){
+                System.out.println("["+i+"]->"+ pessoas[i].toString());
+            }else{
+                System.out.println("["+i+"]-> Livre");
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         
         scan = new Scanner(System.in);
@@ -86,6 +113,7 @@ public class App{
         //declarar
         ContaBancaria conta=null;        
         Pessoa pessoa=null;
+        Pessoa[] pessoas = new Pessoa[10];
         
         
         int opcao;
@@ -98,10 +126,15 @@ public class App{
             switch(opcao){
                 case 1:
                     pessoa = cadastrarPessoa();
+                    boolean resultado = adicionarPessoaVetor(pessoas, pessoa);
+                    if(resultado){
+                        System.out.println("Pessoa adicionada!!");
+                    }else{
+                        System.out.println("Erro! Sem espaço");
+                    }
                 break;
                 case 2:
-                    System.out.println("Dados da Pessoa");
-                    System.out.println(pessoa.toString());
+                    mostrarVetorPessoas(pessoas);
                 break;
                 case 3:
                     conta = cadastrarConta();
