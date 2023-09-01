@@ -1,0 +1,67 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Resolução Atividade 2409 - Classe App",
+  "steps": [
+    {
+      "file": "src/App.java",
+      "description": "Definimos um método para mostrar o menu de opções",
+      "line": 6
+    },
+    {
+      "file": "src/App.java",
+      "description": "declaramos um while para permitir que o usuário realize várias opções",
+      "line": 94
+    },
+    {
+      "file": "src/App.java",
+      "description": "mostramos o menu",
+      "line": 95
+    },
+    {
+      "file": "src/App.java",
+      "description": "utilizamos um switch para verificar qual a opção do usuário",
+      "line": 98
+    },
+    {
+      "file": "src/App.java",
+      "description": "se for 1, invocamos a função cadastrarPessoa. A ideia de utilizar função é deixar o código mais limpo e organizado.",
+      "line": 100
+    },
+    {
+      "file": "src/App.java",
+      "description": "O método cadastrarPessoa, faz a leitura dos dados da pessoa, instancia um objeto da classe Pessoa e retorna este objeto.",
+      "line": 20
+    },
+    {
+      "file": "src/App.java",
+      "description": "Se o usuário escolher 3, invocamos a função cadastrarConta.",
+      "line": 107
+    },
+    {
+      "file": "src/App.java",
+      "description": "A ideia desta função é a mesma da cadastrarPessoa",
+      "line": 39
+    },
+    {
+      "file": "src/App.java",
+      "description": "Se o usuário escolher 5, executamos a função depositar, passando como parâmetro o objeto conta.",
+      "line": 114
+    },
+    {
+      "file": "src/App.java",
+      "description": "nesta função, o valor a ser depositado é solicitado. ",
+      "line": 62
+    },
+    {
+      "file": "src/App.java",
+      "description": "invocamos o método depositar passando o valor lido. O retorno do método depositar, que é uma String, é mostrado na tela.",
+      "line": 69
+    },
+    {
+      "file": "src/App.java",
+      "description": "A função sacar é semelhante a função depositar.",
+      "line": 117
+    }
+  ],
+  "ref": "prep_0109"
+}
