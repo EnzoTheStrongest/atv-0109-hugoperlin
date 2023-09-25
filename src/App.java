@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class App{
     private static Scanner scan;
+    private static Banco1509 banco;
 
     private static String menu(){
         String str = "";
@@ -17,7 +18,7 @@ public class App{
         return str;
     }
 
-    private static Pessoa cadastrarPessoa(){
+    private static void cadastrarPessoa(){
         String nome,cpf,email,telefone;
         Pessoa pessoa;
 
@@ -31,90 +32,87 @@ public class App{
         System.out.println("Digite o telefone:");
         telefone = scan.nextLine();
 
-        pessoa = new Pessoa(nome, cpf, email, telefone);
+        boolean ret = banco.cadastrarPessoa(nome, cpf, email, telefone);
 
-        return pessoa;
+        if(ret){
+            System.out.println("Pessoa cadastrada!");
+        }else{
+            System.out.println("Problema ao cadastrar!");
+        }
+
+
     }
 
-    private static ContaBancaria cadastrarConta(){
-        ContaBancaria conta;
+    private static void cadastrarConta(){
         int numero,agencia;
-        String senha,cpf,email;
+        String cpf;
 
         System.out.println("###Cadastro de Conta###");
         System.out.println("Digite o número:");
         numero = scan.nextInt();scan.nextLine();
         System.out.println("Digite a agência:");
         agencia = scan.nextInt();scan.nextLine();
-        System.out.println("Digite a senha:");
-        senha = scan.nextLine();
         System.out.println("Digite o cpf:");
         cpf = scan.nextLine();
-        System.out.println("Digite o e-mail:");
-        email = scan.nextLine();
 
-        conta = new ContaBancaria(numero, agencia, 0.0, cpf, senha, email);
+        boolean ret = banco.cadastrarContaBancaria(numero, agencia, cpf);
 
-        return conta;
-
-    }
-
-    private static void depositar(ContaBancaria conta){
-        double valor;
-
-        System.out.println("Depositar na conta");
-        System.out.println("Digite o valor:");
-        valor = scan.nextDouble();
-
-        System.out.println(conta.depositar(valor));
-    }
-
-    private static void sacar(ContaBancaria conta){
-        double valor;
-
-        System.out.println("Sacar da conta");
-        System.out.println("Digite o valor:");
-        valor = scan.nextDouble();
-
-        System.out.println(conta.sacar(valor));
-    }
-
-    private static boolean adicionarPessoaVetor(
-                                           Pessoa[] vetor, 
-                                           Pessoa nova){
+        if(ret){
+            System.out.println("Conta cadastrada!");
+        }else{
+            System.out.println("Problema ao cadstrar conta!");
+        }
         
-        for(int i=0;i<vetor.length;i++){
-            if(vetor[i] == null){
-                vetor[i] = nova;
-                return true;
-            }
-        }
+    }
 
-        return false;
+    private static void depositar(){
+        double valor;
+        int numero,agencia;
+        
+        System.out.println("Depositar na conta");
+        System.out.println("Digite o número:");
+        numero = scan.nextInt();scan.nextLine();
+        System.out.println("Digite a agência:");
+        agencia = scan.nextInt();
+        System.out.println("Digite o valor:");
+        valor = scan.nextDouble();
+
+        String ret = banco.efetuarDeposito(agencia, numero, valor);
+        System.out.println(ret);
+    }
+
+    private static void sacar(){
+        double valor;
+        int numero,agencia;
+        
+        System.out.println("Depositar na conta");
+        System.out.println("Digite o número:");
+        numero = scan.nextInt();scan.nextLine();
+        System.out.println("Digite a agência:");
+        agencia = scan.nextInt();
+        System.out.println("Digite o valor:");
+        valor = scan.nextDouble();
+
+        String ret = banco.efetuarSaque(agencia, numero, valor);
+        System.out.println(ret);
+    }
+
+    private static void mostrarClientes(){
+        System.out.println("Clientes");
+        System.out.println(banco.mostrarDadosClientes());
+    }
+
+    private static void mostrarContas(){
+        System.out.println("Contas");
+        System.out.println(banco.mostrarDadosContas());
+    }
+
     
-    }
-
-    private static void mostrarVetorPessoas(Pessoa[] pessoas){
-        System.out.println("###Pessoas Cadastradas###");
-        for(int i=0;i<pessoas.length;i++){
-            if(pessoas[i]!=null){
-                System.out.println("["+i+"]->"+ pessoas[i].toString());
-            }else{
-                System.out.println("["+i+"]-> Livre");
-            }
-        }
-    }
-
-
     public static void main(String[] args) {
         
         scan = new Scanner(System.in);
 
-        //declarar
-        ContaBancaria conta=null;        
-        Pessoa pessoa=null;
-        Pessoa[] pessoas = new Pessoa[10];
-        
+        banco = new Banco1509();
         
         int opcao;
 
@@ -125,29 +123,22 @@ public class App{
 
             switch(opcao){
                 case 1:
-                    pessoa = cadastrarPessoa();
-                    boolean resultado = adicionarPessoaVetor(pessoas, pessoa);
-                    if(resultado){
-                        System.out.println("Pessoa adicionada!!");
-                    }else{
-                        System.out.println("Erro! Sem espaço");
-                    }
+                    cadastrarPessoa();
                 break;
                 case 2:
-                    mostrarVetorPessoas(pessoas);
+                    mostrarClientes();
                 break;
                 case 3:
-                    conta = cadastrarConta();
+                    cadastrarConta();
                 break;
                 case 4:
-                    System.out.println("Dados da conta");
-                    System.out.println(conta.toString());
+                    mostrarContas();
                 break;
                 case 5:
-                    depositar(conta);
+                    depositar();
                 break;
                 case 6:
-                    sacar(conta);
+                    sacar();
                 break;
             }
 

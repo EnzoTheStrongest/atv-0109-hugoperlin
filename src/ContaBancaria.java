@@ -4,24 +4,38 @@ public class ContaBancaria {
     private int numero;
     private int agencia;
     private double saldo;
-    private String cpf;
+    /*private String cpf;
     private String senha;
-    private String email;
-    private Pessoa proprietario;
+    private String email;*/
+    private Pessoa titular;
+
+    private static int quantidadeDeContas=0;
 
     public ContaBancaria(int numero, 
                          int agencia, 
                          double saldo, 
-                         String cpf, 
-                         String senha, 
-                         String email){
+                         Pessoa titular){
         this.numero = numero;
         this.agencia = agencia;
         this.saldo = saldo;
-        this.cpf = cpf;
-        this.senha = senha;
-        this.email = email;
+        this.titular = titular;
+
+        quantidadeDeContas += 1;
     }
+
+    public ContaBancaria(int numero,
+                         int agencia,
+                         Pessoa titular){
+        this.numero = numero;
+        this.agencia = agencia;
+        this.titular = titular;
+        quantidadeDeContas += 1;
+    }
+
+    public static int getQuantidadeContas(){
+        return quantidadeDeContas;
+    }
+
 
 
     public void setNumero(int numero){
@@ -40,28 +54,8 @@ public class ContaBancaria {
         return agencia;
     }
 
-    public void setCpf(String cpf){
-        this.cpf = cpf;
-    }
-
-    public String getCpf(){
-        return cpf;
-    }
-
-    public void setSenha(String senha){
-        this.senha = senha;
-    }
-
-    public String getSenha(){
-        return senha;
-    }
-
-    public void setEmail(String email){
-        this.email = email;
-    }
-
-    public String getEmail(){
-        return email;
+    public Pessoa getTitular(){
+        return titular;
     }
 
     public double getSaldo(){
@@ -120,7 +114,7 @@ public class ContaBancaria {
 
     public String toString(){
         return "Número:" +numero+" Agência:"+agencia+
-        " Saldo: R$"+saldo+" CPF:"+cpf+" Senha:"+senha;
+        " Saldo: R$"+saldo+" Titular:"+titular.toString();
     }
 
 
